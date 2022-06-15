@@ -11,7 +11,10 @@ public class Collision : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    Debug.Log("Enter");
+    if (other.tag == "Coin")
+    {
+      Debug.Log("Got Golden Coin");
+    }
   }
 
   void OnTriggerExit2D(Collider2D other)
