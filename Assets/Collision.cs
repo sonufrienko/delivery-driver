@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
+  bool hasCoin;
+
   void OnCollisionEnter2D(Collision2D other)
   {
     Debug.Log("BAM");
@@ -14,11 +16,16 @@ public class Collision : MonoBehaviour
     if (other.tag == "Coin")
     {
       Debug.Log("Got Golden Coin");
+      hasCoin = true;
+    } 
+    else if (other.tag == "Bank" && hasCoin) 
+    {
+      Debug.Log("You win");
+      hasCoin = false;
     }
   }
 
   void OnTriggerExit2D(Collider2D other)
   {
-    Debug.Log("Exit");
   }
 }
