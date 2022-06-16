@@ -13,8 +13,9 @@ public class Collision : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.tag == "Coin")
+    if (other.tag == "Coin" && !hasCoin)
     {
+      Destroy(other.gameObject);
       Debug.Log("Got Golden Coin");
       hasCoin = true;
     } 
