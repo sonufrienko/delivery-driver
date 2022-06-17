@@ -18,18 +18,27 @@ public class Collision : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.tag == "Coin" && !hasCoin)
+    switch (other.tag)
     {
-      Destroy(other.gameObject);
-      Debug.Log("Got Golden Coin");
-      hasCoin = true;
-      spriteRenderer.color = new Color32(222, 197, 16, 255);
-    }
-    else if (other.tag == "Bank" && hasCoin)
-    {
-      Debug.Log("You win");
-      hasCoin = false;
-      spriteRenderer.color = new Color32(255, 255, 255, 255);
+      case "Coin":
+        if (!hasCoin)
+        {
+          Destroy(other.gameObject);
+          Debug.Log("Got coin");
+          hasCoin = true;
+          spriteRenderer.color = new Color32(222, 197, 16, 255);
+        }
+        break;
+      case "Bank":
+        if (hasCoin)
+        {
+          Debug.Log("You win");
+          hasCoin = false;
+          spriteRenderer.color = new Color32(255, 255, 255, 255);
+        }
+        break;
+      default:
+        break;
     }
   }
 

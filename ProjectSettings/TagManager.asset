@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coin
   - Bank
+  - Bomb
+  - Rocket
   layers:
   - Default
   - TransparentFX
