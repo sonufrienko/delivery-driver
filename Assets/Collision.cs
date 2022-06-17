@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Collision : MonoBehaviour
 {
   bool hasCoin;
+  SpriteRenderer spriteRenderer;
+
+  void Start()
+  {
+    spriteRenderer = GetComponent<SpriteRenderer>();
+  }
 
   void OnCollisionEnter2D(Collision2D other)
   {
@@ -18,11 +23,13 @@ public class Collision : MonoBehaviour
       Destroy(other.gameObject);
       Debug.Log("Got Golden Coin");
       hasCoin = true;
-    } 
-    else if (other.tag == "Bank" && hasCoin) 
+      spriteRenderer.color = new Color32(222, 197, 16, 255);
+    }
+    else if (other.tag == "Bank" && hasCoin)
     {
       Debug.Log("You win");
       hasCoin = false;
+      spriteRenderer.color = new Color32(255, 255, 255, 255);
     }
   }
 
